@@ -1,73 +1,68 @@
-# Welcome to your Lovable project
+# 🛡️ Threat Spotter AI
 
-## Project info
+> **Real-time AI-powered cybersecurity threat tracking dashboard** that visualizes live attacks across the globe and provides instant, actionable defense insights.
 
-**URL**: https://lovable.dev/projects/55ceb8b5-cbb9-470d-921e-dd8536f57171
+🌍 **Live Preview:** [Click here to view the app](https://preview--threat-spotter-ai.lovable.app/)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Overview
 
-**Use Lovable**
+**Threat Spotter AI** is a real-time cybersecurity monitoring tool designed for SMBs, security researchers, and IT teams.  
+It integrates **live threat intelligence feeds** with **AI-powered analysis** to help you understand, visualize, and respond to global cyberattacks as they happen.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/55ceb8b5-cbb9-470d-921e-dd8536f57171) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Features
 
-**Use your preferred IDE**
+- 🌐 **Live Global Threat Map** – See attacks in real time, color-coded by severity.
+- 🤖 **AI-Generated Threat Summaries** – Instant, plain-English breakdowns of technical data.
+- 📊 **Threat Feed Dashboard** – Continuous stream of latest threats with filtering.
+- 🔍 **IP/Domain Lookup** – Search for specific IPs/domains to check risk levels.
+- 📌 **Role-Based Views** – SysAdmin mode (technical detail) & Executive mode (business impact).
+- 🔔 **Live Alerts** – Email, Slack, or Discord integration for high-severity threats.
+- 🗄 **Incident History** – View past incidents with AI-generated summaries.
+- 🖤 **Dark Mode UI** – Modern, cyberpunk-inspired design.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Tech Stack
 
-Follow these steps:
+**Frontend:**  
+- React + Vite  
+- Tailwind CSS (UI styling)  
+- Mapbox / Leaflet (interactive map)  
+- Framer Motion (animations)  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+**Backend:**  
+- FastAPI (Python)  
+- WebSockets (real-time updates)  
+- Integration with VirusTotal, Shodan, and AbuseIPDB APIs  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+**AI Integration:**  
+- OpenAI GPT API for threat summarization  
 
-# Step 3: Install the necessary dependencies.
-npm i
+**Database:**  
+- Supabase (PostgreSQL + Auth)  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+**Hosting:**  
+- Frontend → Vercel  
+- Backend → Render  
+- Database → Supabase  
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📸 Screenshots
 
-**Use GitHub Codespaces**
+*(Add screenshots here once available for extra visual appeal.)*
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📦 Installation
 
-This project is built with:
+Clone the repository:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+git clone https://github.com/yourusername/threat-spotter-ai.git
+cd threat-spotter-ai
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/55ceb8b5-cbb9-470d-921e-dd8536f57171) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
