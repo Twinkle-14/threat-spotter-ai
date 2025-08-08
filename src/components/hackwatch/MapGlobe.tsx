@@ -36,8 +36,6 @@ function toGeoJSON(threats: Threat[]) {
         ioc: t.ioc,
         description: t.description,
         color: severityColor(t.severity),
-        weight:
-          t.severity === "low" ? 0.2 : t.severity === "medium" ? 0.5 : t.severity === "high" ? 0.8 : 1.0,
       },
     })),
   } as any;
@@ -45,18 +43,13 @@ function toGeoJSON(threats: Threat[]) {
 
 interface MapGlobeProps {
   threats: Threat[];
-  display?: "points" | "heatmap";
-  spin?: boolean;
 }
 
-const MapGlobe: React.FC<MapGlobeProps> = ({ threats, display = "points", spin = true }) => {
+const MapGlobe: React.FC<MapGlobeProps> = ({ threats }) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const [token, setToken] = useState<string>(() => localStorage.getItem("mapbox_public_token") || "");
   const [tempToken, setTempToken] = useState<string>(token);
-
-const spinRef = useRef<boolean>(spin);
-useEffect(() => { spinRef.current = spin; }, [spin]);
 
   const geojson = useMemo(() => toGeoJSON(threats), [threats]);
 
@@ -91,69 +84,11 @@ useEffect(() => { spinRef.current = spin; }, [spin]);
           data: geojson,
         });
 
-        // Heatmap layer
-        mapRef.current?.addLayer({
-          id: "threat-heat",
-          type: "heatmap",
-          source: "threats",
-          maxzoom: 9,
-          layout: { visibility: display === "heatmap" ? "visible" : "none" },
-          paint: {
-            "heatmap-weight": ["get", "weight"],
-            "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 0, 0.4, 9, 2],
-            "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 9, 24],
-            "heatmap-color": [
-              "interpolate",
-              ["linear"],
-              ["heatmap-density"],
-              0, "rgba(33, 147, 176, 0)",
-              0.2, "rgba(33, 147, 176, 0.4)",
-              0.4, "rgba(44, 209, 171, 0.6)",
-              0.6, "rgba(255, 204, 0, 0.8)",
-              0.8, "rgba(255, 102, 0, 0.9)",
-              1, "rgba(255, 0, 0, 1)"
-            ],
-            "heatmap-opacity": 0.8,
-          },
-        });
-
-        // Points layer
         mapRef.current?.addLayer({
           id: "threat-points",
           type: "circle",
           source: "threats",
-          layout: { visibility: display === "points" ? "visible" : "none" },
           paint: {
-            "circle-radius": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              0, 2,
-              4, 6,
-            ],
-            "circle-color": ["get", "color"],
-            "circle-opacity": 0.9,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "#0a0f1a",
-          },
-        });
-
-        mapRef.current?.addLayer({
-          id: "threat-pulse",
-          type: "circle",
-          source: "threats",
-          layout: { visibility: display === "points" ? "visible" : "none" },
-          paint: {
-            "circle-radius": [
-              "interpolate", ["linear"], ["zoom"],
-              0, 4,
-              4, 14
-            ],
-            "circle-color": ["get", "color"],
-            "circle-opacity": 0.15,
-          },
-        });
-      }
             "circle-radius": [
               "interpolate",
               ["linear"],
