@@ -50,14 +50,6 @@ It integrates **live threat intelligence feeds** with **AI-powered analysis** to
 - Backend → Render  
 - Database → Supabase  
 
----
-
-## 📸 Screenshots
-
-*(Add screenshots here once available for extra visual appeal.)*
-
----
-
 ## 📦 Installation
 
 Clone the repository:
